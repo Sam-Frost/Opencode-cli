@@ -5,13 +5,13 @@ package main
 
 import (
 	"log"
-	"main/agent"
 	"main/cmd"
+	"main/store"
 )
 
 func main() {
-	if err := agent.InitDirectory(); err != nil {
-		log.Fatalf("Error occured while trying to initalize config in user home dir : ", err)
+	if err := store.InitStore(); err != nil {
+		log.Fatalf("Initializing Store : %s", err)
 	}
 
 	cmd.Execute()

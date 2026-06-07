@@ -1,7 +1,9 @@
 package model
 
 import (
+	"errors"
 	"fmt"
+	"main/store"
 
 	"github.com/spf13/cobra"
 )
@@ -58,14 +60,21 @@ func setModelCommand() *cobra.Command {
 		Use:   "set",
 		Short: "Set the default model for brocode",
 		Long:  "Set the default LLM model to be used for each user prompt by brocode",
-		Run: func(cmd *cobra.Command, args []string) {
-			modelName := args[0]
+		RunE: func(cmd *cobra.Command, args []string) error {
 
-			if len(modelName) == 0 {
-				fmt.Println("Model name is missing...")
-			} else {
-				fmt.Printf("%s set as default model\n", modelName)
+			if len(args) == 0 || len(args[0]) == 0 {
+				return errors.New("Model name is missing...")
 			}
+
+			// TODO :  Verify if the model name acutally exist
+
+			err := store.SetDefaultModel(args[0])
+
+			if err != nil {
+				return fmt.Errorf("Saving default model : %w", err)
+			}
+
+			return nil
 		},
 	}
 
