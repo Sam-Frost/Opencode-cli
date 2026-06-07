@@ -1,15 +1,30 @@
 # Brocode
 
-Coding agent like PI for you day to day coding AI task. Written in Go!
+A coding agent like Pi for your day-to-day AI coding tasks.  
+Written in Go!
 
-### Commands
+## Commands
 
-1. provider
-  1.1 provider list
-  1.2 provider login --p <proivder_name> --apiKey <acutal_api_key>
-2. model 
-  2.1 model list
-  2.2 model -p <provider_name>
-  2.3 model set <model_name>
-3. agent
-  3.1 agent -p <user_query>
+### 1. Provider
+
+- `provider list`  
+  List all available providers.
+
+- `provider login --p <provider_name> --apiKey <actual_api_key>`  
+  Authenticate with a provider and save its API key.
+
+### 2. Model
+
+- `model list`  
+  List all available models.
+
+- `model -p <provider_name>`  
+  List models for a specific provider.
+
+- `model set <model_name>`  
+  Set the active model.
+
+### 3. Agent
+
+- `agent -p "<user_query>"`  
+  Execute the coding agent with the given prompt.
