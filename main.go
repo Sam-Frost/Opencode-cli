@@ -1,6 +1,3 @@
-/*
-Copyright © 2026 NAME HERE <EMAIL ADDRESS>
-*/
 package main
 
 import (
@@ -14,5 +11,6 @@ func main() {
 		log.Fatalf("Initializing Store : %s", err)
 	}
 
+	GetProvidersListFromApi()
 	cmd.Execute()
 }
